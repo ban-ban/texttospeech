@@ -1,0 +1,7 @@
+{
+  "name": "texttospeechapp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

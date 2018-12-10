@@ -1,14 +1,64 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
+<ion-header color="primary">
+  <ion-navbar >
+    <ion-title text-center>
+      Speak it
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content >
+  <ion-list>
+    <!--Text-->
+    <ion-item hidden="true">
+
+      <ion-textarea  maxlength="80" placeholder="Text to speech" [(ngModel)]="text"></ion-textarea>
+    </ion-item>
+    <!--Rate-->
+    <ion-item hidden="true">
+      <ion-label color="dark">Speed Rate</ion-label>
+      <ion-range min="5" max="20" step="1" [(ngModel)]="rate">
+        <ion-label range-left >0.5</ion-label>
+        <ion-label range-right >2</ion-label>
+      </ion-range>
+    </ion-item>
+    <!--Language-->
+    <ion-item>
+      <ion-label>Language</ion-label>
+      <ion-select [(ngModel)]="locale">
+        <ion-option value="fr-FR">Francais</ion-option>
+        <ion-option value="en-US">English</ion-option>
+        <ion-option value="de-DE">Allemand</ion-option>
+        <ion-option value="es-ES">Espagnol</ion-option>
+        <ion-option value="ja-JP">Japonais</ion-option>
+        <ion-option value="ru-RU">Russe</ion-option>
+        <ion-option [value]="chinese">Chinois</ion-option>
+        
+      </ion-select>
+    </ion-item>
+
+
+  </ion-list>
+
+
+  <button ion-button full (click)="get_permission()">Record voice</button>
+  <button ion-button full (click)="stop_listening()" *ngIf="isIos()">Stop</button>
+
+  <ion-list>
+   <ion-item-sliding *ngFor="let match of matches">
+      <ion-item >
+        <p></p>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+
+ <button ion-button full >Results:</button>
+ <ion-list>
+  <ion-item-sliding >
+     <ion-item >
+       <p>{{matches[0]}}</p>
+     </ion-item>
+   </ion-item-sliding>
+ </ion-list>
+  <!--Play text-->
+  <button ion-button full (click)="playText()">Play Text</button>
 </ion-content>

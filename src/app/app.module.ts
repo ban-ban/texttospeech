@@ -7,6 +7,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { TextToSpeech } from '@ionic-native/text-to-speech';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
+//import { Platform} from 'ionic-angular';
+//import { ChangeDetectorRef} from '@angular/core';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -24,6 +29,8 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
+    TextToSpeech,
+    SpeechRecognition,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

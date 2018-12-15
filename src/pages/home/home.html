@@ -31,6 +31,7 @@
         <ion-option value="es-ES">Espagnol</ion-option>
         <ion-option value="ja-JP">Japonais</ion-option>
         <ion-option value="ru-RU">Russe</ion-option>
+        <ion-option value="th-TH">Thaï</ion-option>
         <ion-option [value]="chinese">Chinois</ion-option>
         
       </ion-select>
@@ -39,11 +40,15 @@
 
   </ion-list>
 
+<ion-row >
+  <ion-col style="text-align:center">
+    <button ion-button round large (click)="get_permission()">Record</button>
+  </ion-col>
+</ion-row>
+ <button ion-button block medium (click)="stop_listening()" *ngIf="isIos()">Stop</button>
 
-  <button ion-button full (click)="get_permission()">Record voice</button>
-  <button ion-button full (click)="stop_listening()" *ngIf="isIos()">Stop</button>
 
-  <ion-list>
+  <!--  <ion-list>
    <ion-item-sliding *ngFor="let match of matches">
       <ion-item >
         <p></p>
@@ -59,6 +64,22 @@
      </ion-item>
    </ion-item-sliding>
  </ion-list>
+
+ -->
+ <ion-card>
+  <ion-card-header>
+    RESULTS
+  </ion-card-header>
+  <ion-card-content>
+    {{matches[0]}}
+  </ion-card-content>
+</ion-card>
+
   <!--Play text-->
-  <button ion-button full (click)="playText()">Play Text</button>
+<ion-row >
+  <ion-col style="text-align:center">
+    <button ion-button round large (click)="playText()">Replay</button>
+
+  </ion-col>
+ </ion-row>
 </ion-content>
